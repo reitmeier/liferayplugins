@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+
+<f:view
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+>
+	<h:head />
+	<h:body>
+		<h:outputText value="#{i18n['mailbox-detail']}" /> 
+		
+		<h:form id="form">
+		 	<p:panel id="panel" >
+		 	
+			<p:messages id="msgs"/>
+		    <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
+		    
+		     	<h:outputText value="#{i18n['mailbox-detail-description']}" />
+		        <p:inputText id="description" value="#{mailboxAdminBean.selectedMailbox.description}" 
+		        	required="true"	 label="#{i18n['mailbox-detail-description']}" 	/>
+		        <p:message for="description" display="icon" />
+            	
+		    
+		        <h:outputText value="#{i18n['mailbox-detail-host']}" />
+		        <p:inputText id="host" value="#{mailboxAdminBean.selectedMailbox.host}" 
+		        	required="true" label="#{i18n['mailbox-detail-host']}" />
+		        <p:message for="host" display="icon"/>
+            	
+           	
+		        <h:outputText value="#{i18n['mailbox-detail-port']}" />
+		        <p:inputText id="port" value="#{mailboxAdminBean.selectedMailbox.port}" 
+		        	required="true" label="#{i18n['mailbox-detail-port']}" validatorMessage="#{i18n['mailbox-detail-port-validation-message']}">
+		        	<f:validateLength minimum="1" maximum="4" for="port"/>
+		        </p:inputText>
+		     	<p:message for="port" display="icon" />
+         
+		        
+		        <h:outputText value="#{i18n['mailbox-detail-mailboxUser']}" />
+		        <p:inputText id="mailboxUser" value="#{mailboxAdminBean.selectedMailbox.mailboxUser}" 
+		        	required="true"  label="#{i18n['mailbox-detail-mailboxUser']}" />
+		        <p:message for="mailboxUser" display="icon"/>
+            	
+		        
+		        <h:outputLabel for="mailboxUserSecret1" value="#{i18n['mailbox-detail-mailboxUserSecret1']}" />
+		        <p:password id="mailboxUserSecret1" value="#{mailboxAdminBean.selectedMailbox.mailboxUserSecret}" match="mailboxUserSecret2" 
+		        	label="#{i18n['mailbox-detail-mailboxUserSecret1']}" required="true" />
+		 		<p:message for="mailboxUserSecret1" display="icon"/>
+            	
+            	
+		        <h:outputLabel for="mailboxUserSecret2" value="#{i18n['mailbox-detail-mailboxUserSecret2']}" />
+		        <p:password id="mailboxUserSecret2" value="#{mailboxAdminBean.selectedMailbox.mailboxUserSecret}" 
+		        	label="#{i18n['mailbox-detail-mailboxUserSecret2']}" required="true" />
+    			<p:message for="mailboxUserSecret2" display="icon"/>
+            	
+            	
+		    </h:panelGrid>
+		 
+		    <p:commandButton id="cancelButton" ajax="false" value="#{i18n['cancel']}" update="panel" action="CANCEL" immediate="true" />
+		    
+		    <p:commandButton id="deleteButton" update=":form:display" onclick="deleteDialog.show()"  oncomplete="deleteDialog.show()" icon="ui-icon-search" value="#{i18n['delete']}" />
+                   
+		    
+		    	   		 
+		    <p:commandButton id="saveButton" ajax="false" value="#{i18n['save']}" update="panel" actionListener="#{mailboxAdminBean.saveMailbox}" />
+			</p:panel>
+			
+			
+			
+			<p:dialog header="#{i18n['delete-mailbox-header']}" widgetVar="deleteDialog" resizable="false" id="deleteDialog"
+                            showEffect="fade" hideEffect="explode" modal="true">
+
+                    <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+                                              
+                        <p:commandButton id="dialogDeleteButton" actionListener="#{mailboxAdminBean.deleteMailbox}"  
+                             value="#{i18n['delete']}"/>
+                        <p:commandButton id="dialogCancelButton" onclick="deleteDialog.hide()" value="#{i18n['cancel']}"/>
+                    </h:panelGrid>
+
+                </p:dialog>
+			
+			
+			
+		</h:form>
+	</h:body>
+</f:view>

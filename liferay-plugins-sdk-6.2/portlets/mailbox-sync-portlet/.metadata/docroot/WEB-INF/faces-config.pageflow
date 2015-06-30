@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14355215990000" configfile="/mailbox-sync-portlet/docroot/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="views/mailbox-sync-administration/view.xhtml" x="60" y="72" id="pf14355240731251" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf14355247980602 pf14356148243405" inlinks="pf14356136763074 pf14356149828866 pf14356157714637" path="/views/mailbox-sync-administration/view.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/mailbox-sync-administration/mailboxDetail.xhtml" x="444" y="72" id="pf14355247980603" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" outlinks="pf14356136763074 pf14356149828866 pf14356157714637" inlinks="pf14355247980602 pf14356148243405" path="/views/mailbox-sync-administration/mailboxDetail.xhtml"/>
+  <links id="pf14355247980602" target="pf14355247980603" source="pf14355240731251" outcome="ADD"/>
+  <links id="pf14356136763074" target="pf14355240731251" source="pf14355247980603" outcome="SAVEOK"/>
+  <links id="pf14356148243405" target="pf14355247980603" source="pf14355240731251" outcome="EDIT"/>
+  <links id="pf14356149828866" target="pf14355240731251" source="pf14355247980603" outcome="CANCEL"/>
+  <links id="pf14356157714637" target="pf14355240731251" source="pf14355247980603" outcome="DELETEOK"/>
+</pageflow:Pageflow>

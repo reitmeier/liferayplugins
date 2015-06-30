@@ -1,0 +1,1 @@
+create index IX_F31BD380 on MailboxSync_Mailbox (groupId);
