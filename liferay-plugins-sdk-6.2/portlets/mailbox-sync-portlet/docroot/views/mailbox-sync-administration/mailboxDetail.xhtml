@@ -74,7 +74,7 @@
 
                     <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
                                               
-                        <p:commandButton id="dialogDeleteButton" actionListener="#{mailboxAdminBean.deleteMailbox}"  
+                        <p:commandButton id="dialogDeleteButton" action="#{mailboxAdminBean.deleteMailbox}"  ajax="false"
                              value="#{i18n['delete']}"/>
                         <p:commandButton id="dialogCancelButton" onclick="deleteDialog.hide()" value="#{i18n['cancel']}"/>
                     </h:panelGrid>
