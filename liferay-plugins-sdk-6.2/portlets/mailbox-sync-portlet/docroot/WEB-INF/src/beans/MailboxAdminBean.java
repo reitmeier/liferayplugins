@@ -23,7 +23,7 @@ import com.liferay.portal.service.ServiceContextFactory;
 
 /**
  * @author Claus Reitmeier
- *
+ * first collaboration test
  */
 @ManagedBean
 @SessionScoped
