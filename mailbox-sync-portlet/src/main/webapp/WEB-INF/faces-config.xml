@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+
+<faces-config
+	version="2.1"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
+>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/view.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/view.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ADD</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/mailboxDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SAVEOK</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/view.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/view.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>EDIT</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/mailboxDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>CANCEL</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/mailboxDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>DELETEOK</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<lifecycle>
+		<phase-listener>com.liferay.faces.util.lifecycle.DebugPhaseListener</phase-listener>
+	</lifecycle>
+</faces-config>
