@@ -120,11 +120,7 @@ public class MailboxAdminBean {
 		return "DELETEERROR";
 	}
 	
-	public String test(ActionEvent actionEvent) throws PortalException, SystemException {
 	
-		MailboxLocalServiceUtil.addMailbox(serviceContext.getUserId(), serviceContext.getScopeGroupId(), "description", "host", 1, "mailboxUser", "mailboxUserSecret", serviceContext);
-		return "OK";
-	}
 	
 	public List<Mailbox> getMailboxList () {
 		try {
