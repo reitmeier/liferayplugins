@@ -14,8 +14,7 @@
 		
 		<h:form id="mailboxoverview">
 			<h:commandButton action="#{mailboxAdminBean.addMailbox}"
-		        styleClass="btn btn-default" value=" #{i18n['add-mailbox']} ">
-		        <f:ajax render="@all" />
+		        styleClass="btn btn-default" value=" #{i18n['add-mailbox']} " ajax="false">
 		    	</h:commandButton>
 	    	<br />
  
@@ -24,7 +23,7 @@
 		            MailboxList
 		        </f:facet>
 		        <p:column style="width:32px;text-align: center">
-   		          <p:commandButton   icon="ui-icon-search" title=" #{i18n['view-mailbox']} " action="EDIT">
+   		          <p:commandButton   icon="ui-icon-search" title=" #{i18n['view-mailbox']} " action="EDIT" ajax="false">
      		           <f:setPropertyActionListener value="#{mailbox}" target="#{mailboxAdminBean.selectedMailbox}" />
      		       </p:commandButton>
     		    </p:column>
