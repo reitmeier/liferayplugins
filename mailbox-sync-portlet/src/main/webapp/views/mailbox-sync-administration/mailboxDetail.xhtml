@@ -58,19 +58,10 @@
             	
 		    </h:panelGrid>
 		 
-		    <p:commandButton id="cancelButton" ajax="false" value="#{i18n['cancel']}" update="panel" action="CANCEL" immediate="true" />
-		    <p:commandButton id="saveButton" ajax="false" value="#{i18n['save']}" update="panel" actionListener="#{mailboxAdminBean.saveMailbox}" />
-		    
-		    <p:growl id="message" showDetail="true" />
-		    <p:commandButton id="deleteButton"  actionListener="#{mailboxAdminBean.deleteMailbox}" value="#{i18n['delete']}" update="message">
-		    	<p:confirm header="#{i18n['delete-mailbox-header']}"></p:confirm>
-		    </p:commandButton>
-		    		    
-		    <p:confirmDialog global="true"   id="deleteDialog" showEffect="fade" hideEffect="fade">
-                <p:commandButton label="#{i18n['delete']}" value="Yes" id="dialogDeleteButton"  />
-                <p:commandButton label="#{i18n['cancel']}" value="No" id="dialogCancelButton" />
-            </p:confirmDialog>
-		    
+		    <p:commandButton id="cancelButton" ajax="false" value="#{i18n['cancel']}"  action="CANCEL" immediate="true" />
+		    <p:commandButton id="saveButton" ajax="false" value="#{i18n['save']}"  action="#{mailboxAdminBean.saveMailbox}" />
+		    <p:commandButton id="deleteButton" ajax="false"  value="#{i18n['delete']}" action="#{mailboxAdminBean.deleteMailbox}"  immediate="true"/>
+		   		    
 		    
 			</p:panel>
 			
