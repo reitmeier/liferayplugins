@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.portlet.PortletRequest;
 
+import at.mailbox.sync.exceptions.MailboxUserSecretException;
+import at.mailbox.sync.helper.ErrorHelper;
 import at.mailbox.sync.model.Mailbox;
 import at.mailbox.sync.service.MailboxLocalServiceUtil;
 
@@ -33,6 +35,8 @@ public class MailboxAdminBean {
 	private ServiceContext serviceContext = null;
 	private Mailbox selectedMailbox = null;
 	private long NEWMAILBOXID=0;
+	private String mailboxUserSecret2;
+	
 	public Mailbox getSelectedMailbox() {
 		return selectedMailbox;
 	}
@@ -81,7 +85,24 @@ public class MailboxAdminBean {
 		}
 	}
 	
+	private boolean validateMailboxUserSecret() throws Exception{
+		if ((selectedMailbox!=null) && (selectedMailbox.getMailboxUserSecret()!=null) && (this.mailboxUserSecret2!=null)) {
+			if (!selectedMailbox.getMailboxUserSecret().equals(mailboxUserSecret2)) {
+				throw new MailboxUserSecretException();
+			} else if (selectedMailbox.getMailboxUserSecret().length()==0) {
+				throw new MailboxUserSecretException();
+			}
+		}
+		return true;
+	}
 	public String saveMailbox() {
+		try {
+			validateMailboxUserSecret();	
+		}catch (Exception ex) {
+			ErrorHelper.reportGlobalMessage(FacesMessage.SEVERITY_ERROR, ex);
+			return "SAVEERROR";
+		}
+		
 		if (isNewMailbox()) {
 			long userId = serviceContext.getUserId();
 			long groupId = serviceContext.getScopeGroupId();
@@ -130,6 +151,12 @@ public class MailboxAdminBean {
 			e.printStackTrace();
 			return new ArrayList<Mailbox>();
 		}
+	}
+	public String getMailboxUserSecret2() {
+		return mailboxUserSecret2;
+	}
+	public void setMailboxUserSecret2(String mailboxUserSecret2) {
+		this.mailboxUserSecret2 = mailboxUserSecret2;
 	}
 	
 	

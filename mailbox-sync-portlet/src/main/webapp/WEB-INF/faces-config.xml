@@ -6,6 +6,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd"
 >
+	<application>
+			<resource-bundle>
+				<base-name>at.mailbox.sync.communication.communication</base-name>
+				<var>msg_communication</var>
+			</resource-bundle>
+	</application>
+
 	<navigation-rule>
 		<display-name>views/mailbox-sync-administration/view.xhtml</display-name>
 		<from-view-id>/views/mailbox-sync-administration/view.xhtml</from-view-id>
