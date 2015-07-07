@@ -80,9 +80,9 @@
         <column name="clamavStatus" type="String"></column>
         <column name="eventCalendarStatus" type="String"></column>
         <column name="documentFolderStatus" type="String"></column>
+        <column name="webContentFolderStatus" type="String"></column>
         <column name="eventId" type="long"></column>
         <column name="documentId" type="long"></column>
         <column name="webcontentId" type="long"></column>
-        <column name="webContentFolderStatus" type="String"></column>
 	</entity>
 </service-builder>
