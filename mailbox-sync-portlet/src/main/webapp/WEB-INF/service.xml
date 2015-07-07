@@ -29,4 +29,60 @@
             <finder-column name="groupId"></finder-column>
         </finder>
 	</entity>
+	<entity name="Task">
+
+		<!-- PK fields -->
+
+		<column name="taskId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="status" type="String"></column>
+        <column name="mailboxId" type="long"></column>
+        <column name="permissionUserGroupId" type="long"></column>
+        <column name="eventCalendarId" type="long"></column>
+        <column name="documentFolderId" type="long"></column>
+        <column name="webcontentFolderId" type="long"></column>
+        <column name="vocabularyId" type="long"></column>
+        <column name="period" type="long"></column>
+        <column name="clamavServerIP" type="String"></column>
+        <column name="clamavPort" type="int"></column>
+	</entity>
+	<entity name="TaskHistory">
+
+		<!-- PK fields -->
+
+		<column name="taskHistoryId" type="long" primary="true"></column>
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long"></column>
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long"></column>
+		<column name="userId" type="long"></column>
+		<column name="userName" type="String"></column>
+		<column name="createDate" type="Date"></column>
+		<column name="modifiedDate" type="Date"></column>
+        <column name="taskId" type="long"></column>
+        <column name="taskStatus" type="String"></column>
+        <column name="mailboxStatus" type="String"></column>
+        <column name="clamavStatus" type="String"></column>
+        <column name="eventCalendarStatus" type="String"></column>
+        <column name="documentFolderStatus" type="String"></column>
+        <column name="eventId" type="long"></column>
+        <column name="documentId" type="long"></column>
+        <column name="webcontentId" type="long"></column>
+        <column name="webContentFolderStatus" type="String"></column>
+	</entity>
 </service-builder>
