@@ -1,6 +1,6 @@
 package at.mailbox.sync.service.base;
 
-import at.mailbox.sync.service.MailboxServiceUtil;
+import at.mailbox.sync.service.TaskServiceUtil;
 
 import java.util.Arrays;
 
@@ -8,13 +8,13 @@ import java.util.Arrays;
  * @author Claus Reitmeier
  * @generated
  */
-public class MailboxServiceClpInvoker {
+public class TaskServiceClpInvoker {
     private String _methodName24;
     private String[] _methodParameterTypes24;
     private String _methodName25;
     private String[] _methodParameterTypes25;
 
-    public MailboxServiceClpInvoker() {
+    public TaskServiceClpInvoker() {
         _methodName24 = "getBeanIdentifier";
 
         _methodParameterTypes24 = new String[] {  };
@@ -28,12 +28,12 @@ public class MailboxServiceClpInvoker {
         Object[] arguments) throws Throwable {
         if (_methodName24.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes24, parameterTypes)) {
-            return MailboxServiceUtil.getBeanIdentifier();
+            return TaskServiceUtil.getBeanIdentifier();
         }
 
         if (_methodName25.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes25, parameterTypes)) {
-            MailboxServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
+            TaskServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }

@@ -1,6 +1,7 @@
 package at.mailbox.sync.service;
 
 import at.mailbox.sync.model.MailboxClp;
+import at.mailbox.sync.model.TaskClp;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -92,6 +93,10 @@ public class ClpSerializer {
             return translateInputMailbox(oldModel);
         }
 
+        if (oldModelClassName.equals(TaskClp.class.getName())) {
+            return translateInputTask(oldModel);
+        }
+
         return oldModel;
     }
 
@@ -117,6 +122,16 @@ public class ClpSerializer {
         return newModel;
     }
 
+    public static Object translateInputTask(BaseModel<?> oldModel) {
+        TaskClp oldClpModel = (TaskClp) oldModel;
+
+        BaseModel<?> newModel = oldClpModel.getTaskRemoteModel();
+
+        newModel.setModelAttributes(oldClpModel.getModelAttributes());
+
+        return newModel;
+    }
+
     public static Object translateInput(Object obj) {
         if (obj instanceof BaseModel<?>) {
             return translateInput((BaseModel<?>) obj);
@@ -134,6 +149,40 @@ public class ClpSerializer {
 
         if (oldModelClassName.equals("at.mailbox.sync.model.impl.MailboxImpl")) {
             return translateOutputMailbox(oldModel);
+        } else if (oldModelClassName.endsWith("Clp")) {
+            try {
+                ClassLoader classLoader = ClpSerializer.class.getClassLoader();
+
+                Method getClpSerializerClassMethod = oldModelClass.getMethod(
+                        "getClpSerializerClass");
+
+                Class<?> oldClpSerializerClass = (Class<?>) getClpSerializerClassMethod.invoke(oldModel);
+
+                Class<?> newClpSerializerClass = classLoader.loadClass(oldClpSerializerClass.getName());
+
+                Method translateOutputMethod = newClpSerializerClass.getMethod("translateOutput",
+                        BaseModel.class);
+
+                Class<?> oldModelModelClass = oldModel.getModelClass();
+
+                Method getRemoteModelMethod = oldModelClass.getMethod("get" +
+                        oldModelModelClass.getSimpleName() + "RemoteModel");
+
+                Object oldRemoteModel = getRemoteModelMethod.invoke(oldModel);
+
+                BaseModel<?> newModel = (BaseModel<?>) translateOutputMethod.invoke(null,
+                        oldRemoteModel);
+
+                return newModel;
+            } catch (Throwable t) {
+                if (_log.isInfoEnabled()) {
+                    _log.info("Unable to translate " + oldModelClassName, t);
+                }
+            }
+        }
+
+        if (oldModelClassName.equals("at.mailbox.sync.model.impl.TaskImpl")) {
+            return translateOutputTask(oldModel);
         } else if (oldModelClassName.endsWith("Clp")) {
             try {
                 ClassLoader classLoader = ClpSerializer.class.getClassLoader();
@@ -246,6 +295,10 @@ public class ClpSerializer {
             return new at.mailbox.sync.NoSuchMailboxException();
         }
 
+        if (className.equals("at.mailbox.sync.NoSuchTaskException")) {
+            return new at.mailbox.sync.NoSuchTaskException();
+        }
+
         return throwable;
     }
 
@@ -255,6 +308,16 @@ public class ClpSerializer {
         newModel.setModelAttributes(oldModel.getModelAttributes());
 
         newModel.setMailboxRemoteModel(oldModel);
+
+        return newModel;
+    }
+
+    public static Object translateOutputTask(BaseModel<?> oldModel) {
+        TaskClp newModel = new TaskClp();
+
+        newModel.setModelAttributes(oldModel.getModelAttributes());
+
+        newModel.setTaskRemoteModel(oldModel);
 
         return newModel;
     }

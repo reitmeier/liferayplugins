@@ -1,6 +1,6 @@
 package at.mailbox.sync.service.base;
 
-import at.mailbox.sync.service.MailboxLocalServiceUtil;
+import at.mailbox.sync.service.TaskLocalServiceUtil;
 
 import java.util.Arrays;
 
@@ -8,7 +8,7 @@ import java.util.Arrays;
  * @author Claus Reitmeier
  * @generated
  */
-public class MailboxLocalServiceClpInvoker {
+public class TaskLocalServiceClpInvoker {
     private String _methodName0;
     private String[] _methodParameterTypes0;
     private String _methodName1;
@@ -57,25 +57,23 @@ public class MailboxLocalServiceClpInvoker {
     private String[] _methodParameterTypes50;
     private String _methodName51;
     private String[] _methodParameterTypes51;
-    private String _methodName52;
-    private String[] _methodParameterTypes52;
 
-    public MailboxLocalServiceClpInvoker() {
-        _methodName0 = "addMailbox";
+    public TaskLocalServiceClpInvoker() {
+        _methodName0 = "addTask";
 
-        _methodParameterTypes0 = new String[] { "at.mailbox.sync.model.Mailbox" };
+        _methodParameterTypes0 = new String[] { "at.mailbox.sync.model.Task" };
 
-        _methodName1 = "createMailbox";
+        _methodName1 = "createTask";
 
         _methodParameterTypes1 = new String[] { "long" };
 
-        _methodName2 = "deleteMailbox";
+        _methodName2 = "deleteTask";
 
         _methodParameterTypes2 = new String[] { "long" };
 
-        _methodName3 = "deleteMailbox";
+        _methodName3 = "deleteTask";
 
-        _methodParameterTypes3 = new String[] { "at.mailbox.sync.model.Mailbox" };
+        _methodParameterTypes3 = new String[] { "at.mailbox.sync.model.Task" };
 
         _methodName4 = "dynamicQuery";
 
@@ -113,11 +111,11 @@ public class MailboxLocalServiceClpInvoker {
                 "com.liferay.portal.kernel.dao.orm.Projection"
             };
 
-        _methodName10 = "fetchMailbox";
+        _methodName10 = "fetchTask";
 
         _methodParameterTypes10 = new String[] { "long" };
 
-        _methodName11 = "getMailbox";
+        _methodName11 = "getTask";
 
         _methodParameterTypes11 = new String[] { "long" };
 
@@ -125,17 +123,17 @@ public class MailboxLocalServiceClpInvoker {
 
         _methodParameterTypes12 = new String[] { "java.io.Serializable" };
 
-        _methodName13 = "getMailboxs";
+        _methodName13 = "getTasks";
 
         _methodParameterTypes13 = new String[] { "int", "int" };
 
-        _methodName14 = "getMailboxsCount";
+        _methodName14 = "getTasksCount";
 
         _methodParameterTypes14 = new String[] {  };
 
-        _methodName15 = "updateMailbox";
+        _methodName15 = "updateTask";
 
-        _methodParameterTypes15 = new String[] { "at.mailbox.sync.model.Mailbox" };
+        _methodParameterTypes15 = new String[] { "at.mailbox.sync.model.Task" };
 
         _methodName40 = "getBeanIdentifier";
 
@@ -145,39 +143,39 @@ public class MailboxLocalServiceClpInvoker {
 
         _methodParameterTypes41 = new String[] { "java.lang.String" };
 
-        _methodName46 = "addMailbox";
+        _methodName46 = "addTask";
 
-        _methodParameterTypes46 = new String[] {
-                "long", "long", "java.lang.String", "java.lang.String", "int",
-                "java.lang.String", "java.lang.String",
+        _methodParameterTypes46 = new String[] {  };
+
+        _methodName47 = "addTask";
+
+        _methodParameterTypes47 = new String[] {
+                "long", "long", "java.lang.String", "java.lang.Long",
+                "java.lang.Long", "java.lang.Long", "java.lang.Long",
+                "java.lang.Long", "java.lang.Long", "java.lang.Long",
+                "java.lang.String", "java.lang.Integer",
                 "com.liferay.portal.service.ServiceContext"
             };
 
-        _methodName47 = "deleteMailbox";
+        _methodName48 = "deleteTask";
 
-        _methodParameterTypes47 = new String[] { "at.mailbox.sync.model.Mailbox" };
+        _methodParameterTypes48 = new String[] { "at.mailbox.sync.model.Task" };
 
-        _methodName48 = "deleteMailbox";
-
-        _methodParameterTypes48 = new String[] { "long" };
-
-        _methodName49 = "getMaibox";
+        _methodName49 = "deleteTask";
 
         _methodParameterTypes49 = new String[] { "long" };
 
-        _methodName50 = "getMailboxByGroupId";
+        _methodName50 = "getTaskByMailboxId";
 
-        _methodParameterTypes50 = new String[] { "long" };
+        _methodParameterTypes50 = new String[] { "long", "java.lang.String" };
 
-        _methodName51 = "getMailboxCountByGroupId";
+        _methodName51 = "updateTask";
 
-        _methodParameterTypes51 = new String[] { "long" };
-
-        _methodName52 = "updateMailbox";
-
-        _methodParameterTypes52 = new String[] {
-                "long", "long", "java.lang.String", "java.lang.String", "int",
-                "java.lang.String", "java.lang.String",
+        _methodParameterTypes51 = new String[] {
+                "long", "long", "java.lang.String", "java.lang.String",
+                "java.lang.Long", "java.lang.Long", "java.lang.Long",
+                "java.lang.Long", "java.lang.Long", "java.lang.Long",
+                "java.lang.Long", "java.lang.String", "java.lang.Integer",
                 "com.liferay.portal.service.ServiceContext"
             };
     }
@@ -186,44 +184,44 @@ public class MailboxLocalServiceClpInvoker {
         Object[] arguments) throws Throwable {
         if (_methodName0.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes0, parameterTypes)) {
-            return MailboxLocalServiceUtil.addMailbox((at.mailbox.sync.model.Mailbox) arguments[0]);
+            return TaskLocalServiceUtil.addTask((at.mailbox.sync.model.Task) arguments[0]);
         }
 
         if (_methodName1.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes1, parameterTypes)) {
-            return MailboxLocalServiceUtil.createMailbox(((Long) arguments[0]).longValue());
+            return TaskLocalServiceUtil.createTask(((Long) arguments[0]).longValue());
         }
 
         if (_methodName2.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes2, parameterTypes)) {
-            return MailboxLocalServiceUtil.deleteMailbox(((Long) arguments[0]).longValue());
+            return TaskLocalServiceUtil.deleteTask(((Long) arguments[0]).longValue());
         }
 
         if (_methodName3.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes3, parameterTypes)) {
-            return MailboxLocalServiceUtil.deleteMailbox((at.mailbox.sync.model.Mailbox) arguments[0]);
+            return TaskLocalServiceUtil.deleteTask((at.mailbox.sync.model.Task) arguments[0]);
         }
 
         if (_methodName4.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes4, parameterTypes)) {
-            return MailboxLocalServiceUtil.dynamicQuery();
+            return TaskLocalServiceUtil.dynamicQuery();
         }
 
         if (_methodName5.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes5, parameterTypes)) {
-            return MailboxLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0]);
+            return TaskLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0]);
         }
 
         if (_methodName6.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes6, parameterTypes)) {
-            return MailboxLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0],
+            return TaskLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0],
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue());
         }
 
         if (_methodName7.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes7, parameterTypes)) {
-            return MailboxLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0],
+            return TaskLocalServiceUtil.dynamicQuery((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0],
                 ((Integer) arguments[1]).intValue(),
                 ((Integer) arguments[2]).intValue(),
                 (com.liferay.portal.kernel.util.OrderByComparator) arguments[3]);
@@ -231,105 +229,104 @@ public class MailboxLocalServiceClpInvoker {
 
         if (_methodName8.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes8, parameterTypes)) {
-            return MailboxLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0]);
+            return TaskLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0]);
         }
 
         if (_methodName9.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes9, parameterTypes)) {
-            return MailboxLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0],
+            return TaskLocalServiceUtil.dynamicQueryCount((com.liferay.portal.kernel.dao.orm.DynamicQuery) arguments[0],
                 (com.liferay.portal.kernel.dao.orm.Projection) arguments[1]);
         }
 
         if (_methodName10.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes10, parameterTypes)) {
-            return MailboxLocalServiceUtil.fetchMailbox(((Long) arguments[0]).longValue());
+            return TaskLocalServiceUtil.fetchTask(((Long) arguments[0]).longValue());
         }
 
         if (_methodName11.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes11, parameterTypes)) {
-            return MailboxLocalServiceUtil.getMailbox(((Long) arguments[0]).longValue());
+            return TaskLocalServiceUtil.getTask(((Long) arguments[0]).longValue());
         }
 
         if (_methodName12.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes12, parameterTypes)) {
-            return MailboxLocalServiceUtil.getPersistedModel((java.io.Serializable) arguments[0]);
+            return TaskLocalServiceUtil.getPersistedModel((java.io.Serializable) arguments[0]);
         }
 
         if (_methodName13.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes13, parameterTypes)) {
-            return MailboxLocalServiceUtil.getMailboxs(((Integer) arguments[0]).intValue(),
+            return TaskLocalServiceUtil.getTasks(((Integer) arguments[0]).intValue(),
                 ((Integer) arguments[1]).intValue());
         }
 
         if (_methodName14.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes14, parameterTypes)) {
-            return MailboxLocalServiceUtil.getMailboxsCount();
+            return TaskLocalServiceUtil.getTasksCount();
         }
 
         if (_methodName15.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes15, parameterTypes)) {
-            return MailboxLocalServiceUtil.updateMailbox((at.mailbox.sync.model.Mailbox) arguments[0]);
+            return TaskLocalServiceUtil.updateTask((at.mailbox.sync.model.Task) arguments[0]);
         }
 
         if (_methodName40.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes40, parameterTypes)) {
-            return MailboxLocalServiceUtil.getBeanIdentifier();
+            return TaskLocalServiceUtil.getBeanIdentifier();
         }
 
         if (_methodName41.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes41, parameterTypes)) {
-            MailboxLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
+            TaskLocalServiceUtil.setBeanIdentifier((java.lang.String) arguments[0]);
 
             return null;
         }
 
         if (_methodName46.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes46, parameterTypes)) {
-            return MailboxLocalServiceUtil.addMailbox(((Long) arguments[0]).longValue(),
-                ((Long) arguments[1]).longValue(),
-                (java.lang.String) arguments[2],
-                (java.lang.String) arguments[3],
-                ((Integer) arguments[4]).intValue(),
-                (java.lang.String) arguments[5],
-                (java.lang.String) arguments[6],
-                (com.liferay.portal.service.ServiceContext) arguments[7]);
+            return TaskLocalServiceUtil.addTask();
         }
 
         if (_methodName47.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes47, parameterTypes)) {
-            return MailboxLocalServiceUtil.deleteMailbox((at.mailbox.sync.model.Mailbox) arguments[0]);
+            return TaskLocalServiceUtil.addTask(((Long) arguments[0]).longValue(),
+                ((Long) arguments[1]).longValue(),
+                (java.lang.String) arguments[2], (java.lang.Long) arguments[3],
+                (java.lang.Long) arguments[4], (java.lang.Long) arguments[5],
+                (java.lang.Long) arguments[6], (java.lang.Long) arguments[7],
+                (java.lang.Long) arguments[8], (java.lang.Long) arguments[9],
+                (java.lang.String) arguments[10],
+                (java.lang.Integer) arguments[11],
+                (com.liferay.portal.service.ServiceContext) arguments[12]);
         }
 
         if (_methodName48.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes48, parameterTypes)) {
-            return MailboxLocalServiceUtil.deleteMailbox(((Long) arguments[0]).longValue());
+            return TaskLocalServiceUtil.deleteTask((at.mailbox.sync.model.Task) arguments[0]);
         }
 
         if (_methodName49.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes49, parameterTypes)) {
-            return MailboxLocalServiceUtil.getMaibox(((Long) arguments[0]).longValue());
+            return TaskLocalServiceUtil.deleteTask(((Long) arguments[0]).longValue());
         }
 
         if (_methodName50.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes50, parameterTypes)) {
-            return MailboxLocalServiceUtil.getMailboxByGroupId(((Long) arguments[0]).longValue());
+            return TaskLocalServiceUtil.getTaskByMailboxId(((Long) arguments[0]).longValue(),
+                (java.lang.String) arguments[1]);
         }
 
         if (_methodName51.equals(name) &&
                 Arrays.deepEquals(_methodParameterTypes51, parameterTypes)) {
-            return MailboxLocalServiceUtil.getMailboxCountByGroupId(((Long) arguments[0]).longValue());
-        }
-
-        if (_methodName52.equals(name) &&
-                Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
-            return MailboxLocalServiceUtil.updateMailbox(((Long) arguments[0]).longValue(),
+            return TaskLocalServiceUtil.updateTask(((Long) arguments[0]).longValue(),
                 ((Long) arguments[1]).longValue(),
                 (java.lang.String) arguments[2],
-                (java.lang.String) arguments[3],
-                ((Integer) arguments[4]).intValue(),
-                (java.lang.String) arguments[5],
-                (java.lang.String) arguments[6],
-                (com.liferay.portal.service.ServiceContext) arguments[7]);
+                (java.lang.String) arguments[3], (java.lang.Long) arguments[4],
+                (java.lang.Long) arguments[5], (java.lang.Long) arguments[6],
+                (java.lang.Long) arguments[7], (java.lang.Long) arguments[8],
+                (java.lang.Long) arguments[9], (java.lang.Long) arguments[10],
+                (java.lang.String) arguments[11],
+                (java.lang.Integer) arguments[12],
+                (com.liferay.portal.service.ServiceContext) arguments[13]);
         }
 
         throw new UnsupportedOperationException();

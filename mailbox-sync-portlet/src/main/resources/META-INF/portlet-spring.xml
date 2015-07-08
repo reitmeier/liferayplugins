@@ -4,4 +4,7 @@
 	<bean id="at.mailbox.sync.service.MailboxLocalService" class="at.mailbox.sync.service.impl.MailboxLocalServiceImpl" />
 	<bean id="at.mailbox.sync.service.MailboxService" class="at.mailbox.sync.service.impl.MailboxServiceImpl" />
 	<bean id="at.mailbox.sync.service.persistence.MailboxPersistence" class="at.mailbox.sync.service.persistence.MailboxPersistenceImpl" parent="basePersistence" />
+	<bean id="at.mailbox.sync.service.TaskLocalService" class="at.mailbox.sync.service.impl.TaskLocalServiceImpl" />
+	<bean id="at.mailbox.sync.service.TaskService" class="at.mailbox.sync.service.impl.TaskServiceImpl" />
+	<bean id="at.mailbox.sync.service.persistence.TaskPersistence" class="at.mailbox.sync.service.persistence.TaskPersistenceImpl" parent="basePersistence" />
 </beans>

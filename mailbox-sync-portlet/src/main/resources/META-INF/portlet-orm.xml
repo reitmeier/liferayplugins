@@ -31,8 +31,42 @@
 			<transient name="userUuid" />
 		</attributes>
 	</mapped-superclass>
+	<mapped-superclass class="at.mailbox.sync.model.impl.TaskModelImpl">
+		<attributes>
+			<id name="taskId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="status" />
+			<basic name="description" />
+			<basic name="mailboxId" />
+			<basic name="permissionUserGroupId" />
+			<basic name="eventCalendarId" />
+			<basic name="documentFolderId" />
+			<basic name="webcontentFolderId" />
+			<basic name="vocabularyId" />
+			<basic name="period" />
+			<basic name="clamavServerIP" />
+			<basic name="clamavPort" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
 	<entity class="at.mailbox.sync.model.impl.MailboxImpl" name="Mailbox">
 		<table name="MailboxSync_Mailbox" />
+		<attributes />
+	</entity>
+	<entity class="at.mailbox.sync.model.impl.TaskImpl" name="Task">
+		<table name="MailboxSync_Task" />
 		<attributes />
 	</entity>
 </entity-mappings>

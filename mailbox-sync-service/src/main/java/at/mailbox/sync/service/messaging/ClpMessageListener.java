@@ -3,6 +3,8 @@ package at.mailbox.sync.service.messaging;
 import at.mailbox.sync.service.ClpSerializer;
 import at.mailbox.sync.service.MailboxLocalServiceUtil;
 import at.mailbox.sync.service.MailboxServiceUtil;
+import at.mailbox.sync.service.TaskLocalServiceUtil;
+import at.mailbox.sync.service.TaskServiceUtil;
 
 import com.liferay.portal.kernel.messaging.BaseMessageListener;
 import com.liferay.portal.kernel.messaging.Message;
@@ -23,6 +25,9 @@ public class ClpMessageListener extends BaseMessageListener {
             MailboxLocalServiceUtil.clearService();
 
             MailboxServiceUtil.clearService();
+            TaskLocalServiceUtil.clearService();
+
+            TaskServiceUtil.clearService();
         }
     }
 }

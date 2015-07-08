@@ -15,4 +15,24 @@
 		<field name="mailboxUser" type="String" />
 		<field name="mailboxUserSecret" type="String" />
 	</model>
+	<model name="at.mailbox.sync.model.Task">
+		<field name="taskId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="String" />
+		<field name="description" type="String" />
+		<field name="mailboxId" type="long" />
+		<field name="permissionUserGroupId" type="long" />
+		<field name="eventCalendarId" type="long" />
+		<field name="documentFolderId" type="long" />
+		<field name="webcontentFolderId" type="long" />
+		<field name="vocabularyId" type="long" />
+		<field name="period" type="long" />
+		<field name="clamavServerIP" type="String" />
+		<field name="clamavPort" type="int" />
+	</model>
 </model-hints>

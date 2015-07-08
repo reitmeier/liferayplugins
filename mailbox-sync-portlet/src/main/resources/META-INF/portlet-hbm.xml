@@ -3,6 +3,7 @@
 
 <hibernate-mapping default-lazy="false" auto-import="false">
 	<import class="at.mailbox.sync.model.Mailbox" />
+	<import class="at.mailbox.sync.model.Task" />
 	<class name="at.mailbox.sync.model.impl.MailboxImpl" table="MailboxSync_Mailbox">
 		<cache usage="read-write" />
 		<id name="mailboxId" type="long">
@@ -19,5 +20,28 @@
 		<property name="port" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 		<property name="mailboxUser" type="com.liferay.portal.dao.orm.hibernate.StringType" />
 		<property name="mailboxUserSecret" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="at.mailbox.sync.model.impl.TaskImpl" table="MailboxSync_Task">
+		<cache usage="read-write" />
+		<id name="taskId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="status" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="mailboxId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="permissionUserGroupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="eventCalendarId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="documentFolderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="webcontentFolderId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="vocabularyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="period" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="clamavServerIP" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="clamavPort" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
 	</class>
 </hibernate-mapping>
