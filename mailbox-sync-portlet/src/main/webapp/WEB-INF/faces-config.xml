@@ -51,6 +51,7 @@
 		<navigation-case>
 			<from-outcome>DELETEOK</from-outcome>
 			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
+			<redirect/>
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>

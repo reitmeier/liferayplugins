@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14362143749378" configfile="/mailbox-sync-portlet/src/main/webapp/WEB-INF/faces-config.xml">
   <nodes xsi:type="pageflow:PFPage" name="views/mailbox-sync-administration/view.xhtml" x="338" y="178" id="pf14363064055710" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf14363064055711 pf14363064055712" inlinks="pf14363064055713 pf14363064055714 pf14363064055715" path="/views/mailbox-sync-administration/view.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="views/mailbox-sync-administration/mailboxDetail.xhtml" x="122" y="178" id="pf14363064055716" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf14363064055713 pf14363064055714 pf14363064055715 pf14363064055717" inlinks="pf14363064055711 pf14363064055712 pf14363064055717" path="/views/mailbox-sync-administration/mailboxDetail.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/mailbox-sync-administration/mailboxDetail.xhtml" x="122" y="178" id="pf14363064055716" referenceLink="//@navigationRule.5/@navigationCase.0/@toViewId|" outlinks="pf14363064055713 pf14363064055714 pf14363064055715 pf14363064055717" inlinks="pf14363064055711 pf14363064055712 pf14363064055717" path="/views/mailbox-sync-administration/mailboxDetail.xhtml"/>
   <links id="pf14363064055711" target="pf14363064055716" source="pf14363064055710" outcome="ADD"/>
   <links id="pf14363064055713" target="pf14363064055710" source="pf14363064055716" outcome="SAVEOK"/>
   <links id="pf14363064055712" target="pf14363064055716" source="pf14363064055710" outcome="EDIT"/>
   <links id="pf14363064055714" target="pf14363064055710" source="pf14363064055716" outcome="CANCEL"/>
-  <links id="pf14363064055715" target="pf14363064055710" source="pf14363064055716" outcome="DELETEOK"/>
+  <links id="pf14363064055715" target="pf14363064055710" source="pf14363064055716" outcome="DELETEOK" redirect="true"/>
   <links id="pf14363064055717" target="pf14363064055716" source="pf14363064055716" outcome="SAVEERROR">
     <bendPoints d1Height="-36" d2Height="-36"/>
     <bendPoints d1Width="-64" d1Height="-36" d2Width="-64" d2Height="-36"/>

@@ -158,6 +158,4 @@ public class MailboxAdminBean {
 	public void setMailboxUserSecret2(String mailboxUserSecret2) {
 		this.mailboxUserSecret2 = mailboxUserSecret2;
 	}
-	
-	
 }

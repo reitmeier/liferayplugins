@@ -5,5 +5,6 @@
 	<category name="category.sample">
 		<portlet id="mailbox-sync-portlet" />
 		<portlet id="mailbox-sync-administration"></portlet>
+		<portlet id="mailbox-History"></portlet>
 	</category>
 </display>

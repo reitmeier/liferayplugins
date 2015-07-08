@@ -60,7 +60,14 @@
 		 
 		    <p:commandButton id="cancelButton" ajax="false" value="#{i18n['cancel']}"  action="CANCEL" immediate="true" />
 		    <p:commandButton id="saveButton" ajax="false" value="#{i18n['save']}"  action="#{mailboxAdminBean.saveMailbox}" />
-		    <p:commandButton id="deleteButton" ajax="false"  value="#{i18n['delete']}" action="#{mailboxAdminBean.deleteMailbox}"  immediate="true"/>
+		    <p:commandButton id="deleteButton" value="#{i18n['delete']}" action="#{mailboxAdminBean.deleteMailbox}" process="@this">
+		    	<p:confirm header="#{i18n['confirmation']}" message="#{i18n['mailbox-delete-are-you-sure']}" icon="ui-icon-alert" />
+		    </p:commandButton>
+		    
+		    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+		        <p:commandButton value="#{i18n['yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+		        <p:commandButton value="#{i18n['no']}" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+		    </p:confirmDialog>
 		   		    
 		    
 			</p:panel>
