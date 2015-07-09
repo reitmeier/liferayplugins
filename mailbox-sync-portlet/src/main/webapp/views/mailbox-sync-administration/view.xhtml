@@ -10,34 +10,46 @@
 >
 	<h:head />
 	<h:body>
-		<h:outputText value="#{i18n['mailbox-sync-administration-hello-world']}" /> in view mode.
+		<h:outputText value="#{i18n['mailbox-sync-administration']}" /> in view mode.
 		
-		<h:form id="mailboxoverview">
-			<h:commandButton action="#{mailboxAdminBean.addMailbox}"
+		<h:form id="form">
+		
+		  <p:tabView>
+		  	<p:tab title="#{i18n['mailbox-overview']}">
+		           <h:commandButton action="#{mailboxAdminBean.addMailbox}"
 		        styleClass="btn btn-default" value=" #{i18n['add-mailbox']} " ajax="false">
 		    	</h:commandButton>
-	    	<br />
- 
- 			<p:dataTable id="mailboxlist" var="mailbox" value="#{mailboxAdminBean.mailboxList}" >
-		        <f:facet name="header" >
-		            MailboxList
-		        </f:facet>
-		        <p:column style="width:32px;text-align: center">
-   		          <p:commandButton   icon="ui-icon-search" title=" #{i18n['view-mailbox']} " action="EDIT" ajax="false">
-     		           <f:setPropertyActionListener value="#{mailbox}" target="#{mailboxAdminBean.selectedMailbox}" />
-     		       </p:commandButton>
-    		    </p:column>
-		        <p:column headerText="#{i18n['mailbox-detail-id']} ">
-		            <h:outputText value="#{mailbox.mailboxId}" />
-		        </p:column>
-		        <p:column headerText="#{i18n['mailbox-detail-description']} ">
-		            <h:outputText value="#{mailbox.description}" />
-		        </p:column>
-		        <p:column headerText="#{i18n['mailbox-detail-host']} ">
-		            <h:outputText value="#{mailbox.host}" />
-		        </p:column>
-		        
-    		</p:dataTable>
+		    	<br />
+	 
+	 			<p:dataTable id="mailboxlist" var="mailbox" value="#{mailboxAdminBean.mailboxList}" >
+			        <f:facet name="header" >
+			            MailboxList
+			        </f:facet>
+			        <p:column style="width:32px;text-align: center">
+	   		          <p:commandButton   icon="ui-icon-search" title=" #{i18n['view-mailbox']} " action="EDIT" ajax="false">
+	     		           <f:setPropertyActionListener value="#{mailbox}" target="#{mailboxAdminBean.selectedMailbox}" />
+	     		       </p:commandButton>
+	    		    </p:column>
+			        <p:column headerText="#{i18n['mailbox-detail-id']} ">
+			            <h:outputText value="#{mailbox.mailboxId}" />
+			        </p:column>
+			        <p:column headerText="#{i18n['mailbox-detail-description']} ">
+			            <h:outputText value="#{mailbox.description}" />
+			        </p:column>
+			        <p:column headerText="#{i18n['mailbox-detail-host']} ">
+			            <h:outputText value="#{mailbox.host}" />
+			        </p:column>
+			        
+	    		</p:dataTable>
+		       </p:tab>
+		        <p:tab title="#{i18n['task-overview']}">
+		            <h:panelGrid columns="2" cellpadding="10">
+		               
+		            </h:panelGrid>
+		        </p:tab>
+		    </p:tabView>
+		
+			
     
 		</h:form>
 	</h:body>
