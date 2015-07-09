@@ -31,10 +31,10 @@ import com.liferay.portal.service.ServiceContextFactory;
 @SessionScoped
 public class MailboxAdminBean {
 
-	private List<Mailbox> mailboxList = null;
+	
 	private ServiceContext serviceContext = null;
 	private Mailbox selectedMailbox = null;
-	private long NEWMAILBOXID=0;
+	private long NEWID=0;
 	private String mailboxUserSecret2;
 	
 	public Mailbox getSelectedMailbox() {
@@ -70,7 +70,7 @@ public class MailboxAdminBean {
 	}
 	
 	public String addMailbox() {
-		long mailboxId=NEWMAILBOXID;
+		long mailboxId=NEWID;
 		Mailbox newMailbox=MailboxLocalServiceUtil.createMailbox(mailboxId);
 		this.setSelectedMailbox(newMailbox);
 		return "ADD";
@@ -78,7 +78,7 @@ public class MailboxAdminBean {
 	}
 	
 	public boolean isNewMailbox() {
-		if (selectedMailbox!=null && selectedMailbox.getMailboxId()==NEWMAILBOXID) {
+		if (selectedMailbox!=null && selectedMailbox.getMailboxId()==NEWID) {
 			return true;
 		} else {
 			return false;

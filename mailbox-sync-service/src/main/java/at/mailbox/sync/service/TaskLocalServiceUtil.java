@@ -302,6 +302,12 @@ public class TaskLocalServiceUtil {
             clamavPort, serviceContext);
     }
 
+    public static java.util.List<at.mailbox.sync.model.Task> getTaskByGroupId(
+        long groupId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return getService().getTaskByGroupId(groupId);
+    }
+
     public static void clearService() {
         _service = null;
     }

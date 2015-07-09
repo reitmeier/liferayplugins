@@ -57,6 +57,8 @@ public class TaskLocalServiceClpInvoker {
     private String[] _methodParameterTypes50;
     private String _methodName51;
     private String[] _methodParameterTypes51;
+    private String _methodName52;
+    private String[] _methodParameterTypes52;
 
     public TaskLocalServiceClpInvoker() {
         _methodName0 = "addTask";
@@ -178,6 +180,10 @@ public class TaskLocalServiceClpInvoker {
                 "java.lang.Long", "java.lang.String", "java.lang.Integer",
                 "com.liferay.portal.service.ServiceContext"
             };
+
+        _methodName52 = "getTaskByGroupId";
+
+        _methodParameterTypes52 = new String[] { "long" };
     }
 
     public Object invokeMethod(String name, String[] parameterTypes,
@@ -327,6 +333,11 @@ public class TaskLocalServiceClpInvoker {
                 (java.lang.String) arguments[11],
                 (java.lang.Integer) arguments[12],
                 (com.liferay.portal.service.ServiceContext) arguments[13]);
+        }
+
+        if (_methodName52.equals(name) &&
+                Arrays.deepEquals(_methodParameterTypes52, parameterTypes)) {
+            return TaskLocalServiceUtil.getTaskByGroupId(((Long) arguments[0]).longValue());
         }
 
         throw new UnsupportedOperationException();

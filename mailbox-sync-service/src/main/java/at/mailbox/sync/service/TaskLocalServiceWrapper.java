@@ -311,6 +311,13 @@ public class TaskLocalServiceWrapper implements TaskLocalService,
             clamavServerIP, clamavPort, serviceContext);
     }
 
+    @Override
+    public java.util.List<at.mailbox.sync.model.Task> getTaskByGroupId(
+        long groupId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        return _taskLocalService.getTaskByGroupId(groupId);
+    }
+
     /**
      * @deprecated As of 6.1.0, replaced by {@link #getWrappedService}
      */

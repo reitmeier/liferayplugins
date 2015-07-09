@@ -61,5 +61,8 @@
             <finder-column name="mailboxId"></finder-column>
             <finder-column name="status"></finder-column>
         </finder>
+        <finder name="GroupId" return-type="Collection">
+            <finder-column name="groupId"></finder-column>
+        </finder>
 	</entity>
 </service-builder>

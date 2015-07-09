@@ -3,8 +3,13 @@ package at.mailbox.sync.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 
+import at.mailbox.sync.exceptions.MailboxUserSecretException;
+import at.mailbox.sync.helper.ErrorHelper;
+import at.mailbox.sync.model.Mailbox;
 import at.mailbox.sync.model.Task;
+import at.mailbox.sync.service.MailboxLocalServiceUtil;
 import at.mailbox.sync.service.TaskLocalServiceUtil;
 import at.mailbox.sync.service.base.TaskLocalServiceBaseImpl;
 
@@ -151,6 +156,9 @@ public Task updateTask(long userId, long taskId, String status, String descripti
 	return task;
 }
 
+public List<Task> getTaskByGroupId(long groupId) throws SystemException {
+	return taskPersistence.findByGroupId(groupId);
+}
 
 
 

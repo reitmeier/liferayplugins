@@ -86,15 +86,18 @@ public class TaskModelImpl extends BaseModelImpl<Task> implements TaskModel {
     public static final boolean COLUMN_BITMASK_ENABLED = GetterUtil.getBoolean(com.liferay.util.service.ServiceProps.get(
                 "value.object.column.bitmask.enabled.at.mailbox.sync.model.Task"),
             true);
-    public static long MAILBOXID_COLUMN_BITMASK = 1L;
-    public static long STATUS_COLUMN_BITMASK = 2L;
-    public static long TASKID_COLUMN_BITMASK = 4L;
+    public static long GROUPID_COLUMN_BITMASK = 1L;
+    public static long MAILBOXID_COLUMN_BITMASK = 2L;
+    public static long STATUS_COLUMN_BITMASK = 4L;
+    public static long TASKID_COLUMN_BITMASK = 8L;
     public static final long LOCK_EXPIRATION_TIME = GetterUtil.getLong(com.liferay.util.service.ServiceProps.get(
                 "lock.expiration.time.at.mailbox.sync.model.Task"));
     private static ClassLoader _classLoader = Task.class.getClassLoader();
     private static Class<?>[] _escapedModelInterfaces = new Class[] { Task.class };
     private long _taskId;
     private long _groupId;
+    private long _originalGroupId;
+    private boolean _setOriginalGroupId;
     private long _companyId;
     private long _userId;
     private String _userUuid;
@@ -363,7 +366,19 @@ public class TaskModelImpl extends BaseModelImpl<Task> implements TaskModel {
 
     @Override
     public void setGroupId(long groupId) {
+        _columnBitmask |= GROUPID_COLUMN_BITMASK;
+
+        if (!_setOriginalGroupId) {
+            _setOriginalGroupId = true;
+
+            _originalGroupId = _groupId;
+        }
+
         _groupId = groupId;
+    }
+
+    public long getOriginalGroupId() {
+        return _originalGroupId;
     }
 
     @JSON
@@ -687,6 +702,10 @@ public class TaskModelImpl extends BaseModelImpl<Task> implements TaskModel {
     @Override
     public void resetOriginalValues() {
         TaskModelImpl taskModelImpl = this;
+
+        taskModelImpl._originalGroupId = taskModelImpl._groupId;
+
+        taskModelImpl._setOriginalGroupId = false;
 
         taskModelImpl._originalStatus = taskModelImpl._status;
 

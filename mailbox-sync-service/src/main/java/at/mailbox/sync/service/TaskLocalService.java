@@ -262,4 +262,9 @@ public interface TaskLocalService extends BaseLocalService, InvokableLocalServic
         com.liferay.portal.service.ServiceContext serviceContext)
         throws com.liferay.portal.kernel.exception.PortalException,
             com.liferay.portal.kernel.exception.SystemException;
+
+    @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
+    public java.util.List<at.mailbox.sync.model.Task> getTaskByGroupId(
+        long groupId)
+        throws com.liferay.portal.kernel.exception.SystemException;
 }

@@ -52,6 +52,8 @@ public class TaskLocalServiceClp implements TaskLocalService {
     private String[] _methodParameterTypes21;
     private String _methodName22;
     private String[] _methodParameterTypes22;
+    private String _methodName23;
+    private String[] _methodParameterTypes23;
 
     public TaskLocalServiceClp(InvokableLocalService invokableLocalService) {
         _invokableLocalService = invokableLocalService;
@@ -167,6 +169,10 @@ public class TaskLocalServiceClp implements TaskLocalService {
                 "java.lang.Long", "java.lang.String", "java.lang.Integer",
                 "com.liferay.portal.service.ServiceContext"
             };
+
+        _methodName23 = "getTaskByGroupId";
+
+        _methodParameterTypes23 = new String[] { "long" };
     }
 
     @Override
@@ -856,5 +862,32 @@ public class TaskLocalServiceClp implements TaskLocalService {
         }
 
         return (at.mailbox.sync.model.Task) ClpSerializer.translateOutput(returnObj);
+    }
+
+    @Override
+    public java.util.List<at.mailbox.sync.model.Task> getTaskByGroupId(
+        long groupId)
+        throws com.liferay.portal.kernel.exception.SystemException {
+        Object returnObj = null;
+
+        try {
+            returnObj = _invokableLocalService.invokeMethod(_methodName23,
+                    _methodParameterTypes23, new Object[] { groupId });
+        } catch (Throwable t) {
+            t = ClpSerializer.translateThrowable(t);
+
+            if (t instanceof com.liferay.portal.kernel.exception.SystemException) {
+                throw (com.liferay.portal.kernel.exception.SystemException) t;
+            }
+
+            if (t instanceof RuntimeException) {
+                throw (RuntimeException) t;
+            } else {
+                throw new RuntimeException(t.getClass().getName() +
+                    " is not a valid exception");
+            }
+        }
+
+        return (java.util.List<at.mailbox.sync.model.Task>) ClpSerializer.translateOutput(returnObj);
     }
 }
