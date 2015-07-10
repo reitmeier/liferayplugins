@@ -69,7 +69,7 @@ public class TaskAdminBean {
 		long taskId=NEWID;
 		Task newTask=TaskLocalServiceUtil.createTask(taskId);
 		this.setSelectedTask(newTask);
-		return "ADD";
+		return "ADD_TASK";
 		
 	}
 	public boolean isNewTask() {

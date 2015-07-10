@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:commandButton action="#{mailboxAdminBean.addMailbox}"
+		styleClass="btn btn-default" value=" #{i18n['add-mailbox']} "
+		ajax="false">
+	</h:commandButton>
+	<br />
+
+	<p:dataTable id="mailboxlist" var="mailbox"
+		value="#{mailboxAdminBean.mailboxList}">
+		<f:facet name="header">
+			            MailboxList
+			        </f:facet>
+		<p:column style="width:32px;text-align: center">
+			<p:commandButton icon="ui-icon-search"
+				title=" #{i18n['view-mailbox']} " action="EDIT" ajax="false">
+				<f:setPropertyActionListener value="#{mailbox}"
+					target="#{mailboxAdminBean.selectedMailbox}" />
+			</p:commandButton>
+		</p:column>
+		<p:column headerText="#{i18n['mailbox-detail-id']} ">
+			<h:outputText value="#{mailbox.mailboxId}" />
+		</p:column>
+		<p:column headerText="#{i18n['mailbox-detail-description']} ">
+			<h:outputText value="#{mailbox.description}" />
+		</p:column>
+		<p:column headerText="#{i18n['mailbox-detail-host']} ">
+			<h:outputText value="#{mailbox.host}" />
+		</p:column>
+
+	</p:dataTable>
+
+</f:view>

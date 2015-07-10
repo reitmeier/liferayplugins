@@ -22,8 +22,24 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/view.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/view.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>ADD_TASK</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
 		<display-name>views/mailbox-sync-administration/mailboxDetail.xhtml</display-name>
 		<from-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SAVEOK</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/taskDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>SAVEOK</from-outcome>
 			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
@@ -38,8 +54,24 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/view.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/view.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>EDIT_TASK</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
 		<display-name>views/mailbox-sync-administration/mailboxDetail.xhtml</display-name>
 		<from-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>CANCEL</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/taskDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>CANCEL</from-outcome>
 			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
@@ -55,8 +87,25 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/taskDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>DELETEOK</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/view.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
 		<display-name>views/mailbox-sync-administration/mailboxDetail.xhtml</display-name>
 		<from-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>SAVEERROR</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/taskDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>SAVEERROR</from-outcome>
 			<to-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</to-view-id>

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head />
+	<h:body>
+		<h:outputText value="#{i18n['task-detail']}" />
+
+		<h:form id="form">
+			<p:panel id="panel">
+
+				<p:messages id="msgs" />
+				<h:panelGrid columns="3" cellpadding="5" id="matchGrid">
+
+					<h:outputText value="#{i18n['task-detail-description']}" />
+					<p:inputText id="description"
+						value="#{taskAdminBean.selectedTask.description}" required="true"
+						label="#{i18n['task-detail-description']}" />
+					<p:message for="description" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-mailboxId']}" />
+					<p:inputText id="mailboxId"
+						value="#{taskAdminBean.selectedTask.description}" required="true"
+						label="#{i18n['task-detail-mailboxId']}" />
+					<p:message for="description" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-permissionUserGroupId']}" />
+					<p:inputText id="permissionUserGroupId"
+						value="#{taskAdminBean.selectedTask.permissionUserGroupId}"
+						required="true"
+						label="#{i18n['task-detail-permissionUserGroupId']}" />
+					<p:message for="permissionUserGroupId" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-eventCalendarId']}" />
+					<p:inputText id="eventCalendarId"
+						value="#{taskAdminBean.selectedTask.eventCalendarId}"
+						required="true" label="#{i18n['task-detail-eventCalendarId']}" />
+					<p:message for="eventCalendarId" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-documentFolderId']}" />
+					<p:inputText id="documentFolderId"
+						value="#{taskAdminBean.selectedTask.documentFolderId}"
+						required="true" label="#{i18n['task-detail-documentFolderId']}" />
+					<p:message for="documentFolderId" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-webcontentFolderId']}" />
+					<p:inputText id="webcontentFolderId"
+						value="#{taskAdminBean.selectedTask.webcontentFolderId}"
+						required="true" label="#{i18n['task-detail-webcontentFolderId']}" />
+					<p:message for="webcontentFolderId" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-vocabularyId']}" />
+					<p:inputText id="vocabularyId"
+						value="#{taskAdminBean.selectedTask.vocabularyId}" required="true"
+						label="#{i18n['task-detail-vocabularyId']}" />
+					<p:message for="vocabularyId" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-period']}" />
+					<p:inputText id="period"
+						value="#{taskAdminBean.selectedTask.period}" required="true"
+						label="#{i18n['task-detail-period']}" />
+					<p:message for="period" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-clamavServerIP']}" />
+					<p:inputText id="clamavServerIP"
+						value="#{taskAdminBean.selectedTask.clamavServerIP}"
+						required="true" label="#{i18n['task-detail-clamavServerIP']}" />
+					<p:message for="clamavServerIP" display="icon" />
+
+					<h:outputText value="#{i18n['task-detail-clamavPort']}" />
+					<p:inputText id="clamavPort"
+						value="#{taskAdminBean.selectedTask.clamavPort}" required="true"
+						label="#{i18n['task-detail-clamavPort']}" />
+					<p:message for="clamavPort" display="icon" />
+
+				</h:panelGrid>
+
+				<p:commandButton id="cancelButton" ajax="false"
+					value="#{i18n['cancel']}" action="CANCEL" immediate="true" />
+				<p:commandButton id="saveButton" ajax="false"
+					value="#{i18n['save']}" action="#{taskAdminBean.saveTask}" />
+				<p:commandButton id="deleteButton" value="#{i18n['delete']}"
+					action="#{taskAdminBean.deleteTask}" process="@this">
+					<p:confirm header="#{i18n['confirmation']}"
+						message="#{i18n['task-delete-are-you-sure']}" icon="ui-icon-alert" />
+				</p:commandButton>
+
+				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+					<p:commandButton value="#{i18n['yes']}" type="button"
+						styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+					<p:commandButton value="#{i18n['no']}" type="button"
+						styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+				</p:confirmDialog>
+
+
+			</p:panel>
+
+
+
+
+
+
+		</h:form>
+	</h:body>
+</f:view>

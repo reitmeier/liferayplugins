@@ -45,15 +45,15 @@
             	
 		        
 		        <h:outputLabel for="mailboxUserSecret1" value="#{i18n['mailbox-detail-mailboxUserSecret1']}" />
-		        <p:password id="mailboxUserSecret1" value="#{mailboxAdminBean.selectedMailbox.mailboxUserSecret}" match="mailboxUserSecret2" 
+		        <p:password id="mailboxUserSecret1" value="#{mailboxAdminBean.selectedMailbox.mailboxUserSecret}" 
 		        	label="#{i18n['mailbox-detail-mailboxUserSecret1']}"  />
 		 		<p:message for="mailboxUserSecret1" display="icon"/>
             	
             	
-		        <h:outputLabel for="mailboxUserSecret2" value="#{i18n['mailbox-detail-mailboxUserSecret2']}" />
-		        <p:password id="mailboxUserSecret2" value="#{mailboxAdminBean.mailboxUserSecret2}" 
+		        <!-- <h:outputLabel for="mailboxUserSecret2" value="#{i18n['mailbox-detail-mailboxUserSecret2']}" />
+		        <p:password id="mailboxUserSecret2" value="#{mailboxAdminBean.mailboxUserSecret2}"  match="mailboxUserSecret"
 		        	label="#{i18n['mailbox-detail-mailboxUserSecret2']}"  />
-    			<p:message for="mailboxUserSecret2" display="icon"/>
+    			<p:message for="mailboxUserSecret2" display="icon"/> -->
             	
             	
 		    </h:panelGrid>
