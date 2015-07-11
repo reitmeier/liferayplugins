@@ -23,10 +23,14 @@
 					<p:message for="description" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-mailboxId']}" />
-					<p:inputText id="mailboxId"
-						value="#{taskAdminBean.selectedTask.mailboxId}" required="true"
-						label="#{i18n['task-detail-mailboxId']}" />
+					<p:autoComplete id="mailboxId" value="#{taskAdminBean.selectedMailbox}" completeMethod="#{taskAdminBean.completeMailboxes}"
+               		 var="mailbox" itemLabel="#{mailbox.description}" itemValue="#{mailbox}" converter="mailboxConverter"
+                	groupBy="#{taskAdminBean.getMailboxGroup(mailbox)}" scrollHeight="250"/>
 					<p:message for="description" display="icon" />
+					
+					
+       				
+					
 
 					<h:outputText value="#{i18n['task-detail-permissionUserGroupId']}" />
 					<p:inputText id="permissionUserGroupId"

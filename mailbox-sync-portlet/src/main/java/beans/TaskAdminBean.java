@@ -27,11 +27,19 @@ public class TaskAdminBean {
 	private long NEWID=0;
 	private ServiceContext serviceContext = null;
 	private Task selectedTask = null;
+	private Mailbox selectedMailbox = null;
+	public Mailbox getSelectedMailbox() {
+		return selectedMailbox;
+	}
+	public void setSelectedMailbox(Mailbox selectedMailbox) {
+		this.selectedMailbox = selectedMailbox;
+	}
 	public Task getSelectedTask() {
 		return selectedTask;
 	}
-	public void setSelectedTask(Task selectedTask) {
+	public void setSelectedTask(Task selectedTask) throws SystemException {
 		this.selectedTask = selectedTask;
+		this.setSelectedMailbox(MailboxLocalServiceUtil.fetchMailbox(this.selectedTask.getMailboxId()));
 	}
 	private ServiceContext getServiceContext() throws PortalException, SystemException {
 		if (serviceContext==null) {
@@ -65,7 +73,7 @@ public class TaskAdminBean {
 			return new ArrayList<Task>();
 		}
 	}
-	public String addTask() {
+	public String addTask() throws SystemException {
 		long taskId=NEWID;
 		Task newTask=TaskLocalServiceUtil.createTask(taskId);
 		this.setSelectedTask(newTask);
@@ -96,7 +104,7 @@ public class TaskAdminBean {
 			long groupId = serviceContext.getScopeGroupId();
 			try {
 				String description = selectedTask.getDescription();
-				Long mailboxId = selectedTask.getMailboxId();
+				Long mailboxId = selectedMailbox!=null ? selectedMailbox.getMailboxId() : null;
 		        Long permissionUserGroupId = selectedTask.getPermissionUserGroupId();
 		        Long eventCalendarId = selectedTask.getEventCalendarId();
 		        Long documentFolderId = selectedTask.getDocumentFolderId();
@@ -117,6 +125,7 @@ public class TaskAdminBean {
 			
 		}else {
 			try {
+				selectedTask.setMailboxId(selectedMailbox!=null ? selectedMailbox.getMailboxId() : null);
 				selectedTask=TaskLocalServiceUtil.updateTask(selectedTask);
 				return "SAVEOK";
 			} catch (SystemException e) {
@@ -138,5 +147,21 @@ public class TaskAdminBean {
 		}
 		return "DELETEERROR";
 	}
-
+	
+	public List<Mailbox> completeMailboxes(String query) throws SystemException {
+        List<Mailbox> allMailboxes = MailboxLocalServiceUtil.getMailboxByGroupId(serviceContext.getScopeGroupId());
+        List<Mailbox> filteredMailboxes = new ArrayList<Mailbox>();
+         
+        for (int i = 0; i < allMailboxes.size(); i++) {
+            Mailbox test = allMailboxes.get(i);
+            if(test.getDescription().toLowerCase().startsWith(query)) {
+            	filteredMailboxes.add(test);
+            }
+        }
+         
+        return filteredMailboxes;
+    }
+	 public char getMailboxGroup(Mailbox mailbox) {
+	        return mailbox.getDescription().charAt(0);
+	    }
 }
