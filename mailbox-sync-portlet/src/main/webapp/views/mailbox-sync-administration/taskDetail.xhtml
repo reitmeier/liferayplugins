@@ -29,10 +29,9 @@
 					<p:message for="description" display="icon" />
 					
 					<h:outputText value="#{i18n['task-detail-permissionUserGroupId']}" />
-					<p:inputText id="permissionUserGroupId"
-						value="#{taskAdminBean.selectedTask.permissionUserGroupId}"
-						required="false"
-						label="#{i18n['task-detail-permissionUserGroupId']}" />
+					<p:autoComplete id="permissionUserGroupId" value="#{taskAdminBean.selectedUserGroup}" completeMethod="#{taskAdminBean.completeUserGroups}"
+               		 var="userGroup" itemLabel="#{userGroup.description}" itemValue="#{userGroup}" converter="UserGroupConverter"
+                	groupBy="#{taskAdminBean.getUserGroupGroup(userGroup)}" scrollHeight="250" required="false"/>
 					<p:message for="permissionUserGroupId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-eventCalendarId']}" />

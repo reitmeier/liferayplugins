@@ -18,8 +18,10 @@ import at.mailbox.sync.service.TaskLocalServiceUtil;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.UserGroup;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextFactory;
+import com.liferay.portal.service.UserGroupLocalServiceUtil;
 
 @ManagedBean
 @SessionScoped
@@ -28,6 +30,13 @@ public class TaskAdminBean {
 	private ServiceContext serviceContext = null;
 	private Task selectedTask = null;
 	private Mailbox selectedMailbox = null;
+	public UserGroup getSelectedUserGroup() {
+		return selectedUserGroup;
+	}
+	public void setSelectedUserGroup(UserGroup selectedUserGroup) {
+		this.selectedUserGroup = selectedUserGroup;
+	}
+	private UserGroup selectedUserGroup = null;
 	public Mailbox getSelectedMailbox() {
 		return selectedMailbox;
 	}
@@ -40,6 +49,7 @@ public class TaskAdminBean {
 	public void setSelectedTask(Task selectedTask) throws SystemException {
 		this.selectedTask = selectedTask;
 		this.setSelectedMailbox(MailboxLocalServiceUtil.fetchMailbox(this.selectedTask.getMailboxId()));
+		this.setSelectedUserGroup(UserGroupLocalServiceUtil.fetchUserGroup(this.selectedTask.getPermissionUserGroupId()));
 	}
 	private ServiceContext getServiceContext() throws PortalException, SystemException {
 		if (serviceContext==null) {
@@ -105,7 +115,7 @@ public class TaskAdminBean {
 			try {
 				String description = selectedTask.getDescription();
 				Long mailboxId = selectedMailbox!=null ? selectedMailbox.getMailboxId() : null;
-		        Long permissionUserGroupId = selectedTask.getPermissionUserGroupId();
+		        Long permissionUserGroupId = selectedUserGroup!=null ? selectedUserGroup.getUserGroupId() : null ;
 		        Long eventCalendarId = selectedTask.getEventCalendarId();
 		        Long documentFolderId = selectedTask.getDocumentFolderId();
 		        Long webcontentFolderId = selectedTask.getWebcontentFolderId();
@@ -126,6 +136,7 @@ public class TaskAdminBean {
 		}else {
 			try {
 				selectedTask.setMailboxId(selectedMailbox!=null ? selectedMailbox.getMailboxId() : null);
+				selectedTask.setPermissionUserGroupId(selectedUserGroup!=null ? selectedUserGroup.getUserGroupId() : null);
 				selectedTask=TaskLocalServiceUtil.updateTask(selectedTask);
 				return "SAVEOK";
 			} catch (SystemException e) {
@@ -164,4 +175,32 @@ public class TaskAdminBean {
 	 public char getMailboxGroup(Mailbox mailbox) {
 	        return mailbox.getDescription().charAt(0);
 	}
+	 public String getMailboxDescription() throws SystemException {
+			FacesContext context = FacesContext.getCurrentInstance();
+		    Long mailboxId = context.getApplication().evaluateExpressionGet(context, "#{task.mailboxId}", Long.class);
+			Mailbox mailbox=MailboxLocalServiceUtil.fetchMailbox(mailboxId);
+			return mailbox.getDescription();
+	}
+	 
+	 public List<UserGroup> completeUserGroups(String query) throws SystemException {
+	        List<UserGroup> allUserGroup = UserGroupLocalServiceUtil.getUserGroups(serviceContext.getCompanyId());
+	        List<UserGroup> filteredUserGroups = new ArrayList<UserGroup>();
+	         
+	        for (int i = 0; i < allUserGroup.size(); i++) {
+	            UserGroup test = allUserGroup.get(i);
+	            if(test.getDescription().toLowerCase().startsWith(query)) {
+	            	filteredUserGroups.add(test);
+	            }
+	        }
+	         
+	        return filteredUserGroups;
+	    }
+		 public char getUserGroupGroup(UserGroup userGroup) {
+		        return userGroup.getDescription().charAt(0);
+		}
+		
+	 
+	 
+	 
+	 
 }
