@@ -107,8 +107,16 @@
 		<display-name>views/mailbox-sync-administration/taskDetail.xhtml</display-name>
 		<from-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</from-view-id>
 		<navigation-case>
+			<from-outcome>DELETEERROR</from-outcome>
+			<to-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<display-name>views/mailbox-sync-administration/taskDetail.xhtml</display-name>
+		<from-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</from-view-id>
+		<navigation-case>
 			<from-outcome>SAVEERROR</from-outcome>
-			<to-view-id>/views/mailbox-sync-administration/mailboxDetail.xhtml</to-view-id>
+			<to-view-id>/views/mailbox-sync-administration/taskDetail.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	<lifecycle>

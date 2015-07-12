@@ -167,8 +167,8 @@ public class TaskAdminBean {
 			TaskLocalServiceUtil.deleteTask(selectedTask);
 			return "DELETEOK";
 		} catch (SystemException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			ErrorHelper.reportGlobalMessage(FacesMessage.SEVERITY_ERROR, e);
 		}
 		return "DELETEERROR";
 	}

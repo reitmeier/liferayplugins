@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import at.mailbox.sync.exceptions.MailboxUserSecretException;
 
 import com.liferay.portal.UserEmailAddressException;
+import com.liferay.portal.kernel.exception.SystemException;
 
 public class ErrorHelper {
 
@@ -76,6 +77,12 @@ public class ErrorHelper {
 		}
 		if (ex instanceof MailboxUserSecretException) {
 			errMsg = context.getApplication().getResourceBundle(context, "msg_communication").getString("please-enter-a-valid-user-secret");	
+		}
+		if (ex instanceof SystemException) {
+			if (ex.getMessage().equals("delete-requires-status-archived-or-inactive")){
+				errMsg = context.getApplication().getResourceBundle(context, "msg_communication").getString(ex.getMessage());
+			}
+			
 		}
 
 		
