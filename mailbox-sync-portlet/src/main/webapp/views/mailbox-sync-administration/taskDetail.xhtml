@@ -15,6 +15,9 @@
 
 				<p:messages id="msgs" />
 				<h:panelGrid columns="3" cellpadding="5" id="matchGrid">
+					<h:outputText value="#{i18n['task-detail-status']}" />
+					<p:autoComplete id="status" dropdown="true" value="#{taskAdminBean.selectedTask.status}" completeMethod="#{taskAdminBean.completeStatus}" required="true" />
+					<p:message for="status" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-description']}" />
 					<p:inputText id="description"

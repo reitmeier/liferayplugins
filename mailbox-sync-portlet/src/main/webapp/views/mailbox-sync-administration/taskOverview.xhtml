@@ -24,8 +24,8 @@
 					target="#{taskAdminBean.selectedTask}" />
 			</p:commandButton>
 		</p:column>
-		<p:column headerText="#{i18n['task-detail-id']} ">
-			<h:outputText value="#{task.taskId}" />
+		<p:column headerText="#{i18n['task-detail-status']} ">
+			<h:outputText value="#{task.status}" />
 		</p:column>
 		<p:column headerText="#{i18n['task-detail-description']} ">
 			<h:outputText value="#{task.description}" />

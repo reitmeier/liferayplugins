@@ -1,6 +1,7 @@
 package beans;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,6 +16,7 @@ import at.mailbox.sync.model.Mailbox;
 import at.mailbox.sync.model.Task;
 import at.mailbox.sync.service.MailboxLocalServiceUtil;
 import at.mailbox.sync.service.TaskLocalServiceUtil;
+import at.mailbox.sync.service.impl.TaskLocalServiceImpl.TaskStatus;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
@@ -30,13 +32,25 @@ public class TaskAdminBean {
 	private ServiceContext serviceContext = null;
 	private Task selectedTask = null;
 	private Mailbox selectedMailbox = null;
+	private UserGroup selectedUserGroup = null;
+	private TaskStatus	 taskstatus = null;
+	List<TaskStatus> statusList = new ArrayList<TaskStatus>(Arrays.asList(TaskStatus.values()));
+	public TaskStatus getTaskstatus() {
+		return taskstatus;
+	}
+	public void setTaskstatus(TaskStatus taskstatus) {
+		this.taskstatus = taskstatus;
+	}
+	public List<TaskStatus> getStatusList() {
+		return statusList;
+	}
 	public UserGroup getSelectedUserGroup() {
 		return selectedUserGroup;
 	}
 	public void setSelectedUserGroup(UserGroup selectedUserGroup) {
 		this.selectedUserGroup = selectedUserGroup;
 	}
-	private UserGroup selectedUserGroup = null;
+	
 	public Mailbox getSelectedMailbox() {
 		return selectedMailbox;
 	}
@@ -199,6 +213,16 @@ public class TaskAdminBean {
 		        return userGroup.getDescription().charAt(0);
 		}
 		
+		 public List<TaskStatus> completeStatus(String query) {
+		        List<TaskStatus> results = new ArrayList<TaskStatus>();
+		        for(TaskStatus status : statusList) {
+		            if  (status.name().startsWith(query.toUpperCase())){
+		            	results.add(status);
+		            }
+		        }
+		         
+		        return results;
+		    }
 	 
 	 
 	 
