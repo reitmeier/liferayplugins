@@ -163,5 +163,5 @@ public class TaskAdminBean {
     }
 	 public char getMailboxGroup(Mailbox mailbox) {
 	        return mailbox.getDescription().charAt(0);
-	    }
+	}
 }

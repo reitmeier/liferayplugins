@@ -25,41 +25,37 @@
 					<h:outputText value="#{i18n['task-detail-mailboxId']}" />
 					<p:autoComplete id="mailboxId" value="#{taskAdminBean.selectedMailbox}" completeMethod="#{taskAdminBean.completeMailboxes}"
                		 var="mailbox" itemLabel="#{mailbox.description}" itemValue="#{mailbox}" converter="mailboxConverter"
-                	groupBy="#{taskAdminBean.getMailboxGroup(mailbox)}" scrollHeight="250"/>
+                	groupBy="#{taskAdminBean.getMailboxGroup(mailbox)}" scrollHeight="250" required="false"/>
 					<p:message for="description" display="icon" />
 					
-					
-       				
-					
-
 					<h:outputText value="#{i18n['task-detail-permissionUserGroupId']}" />
 					<p:inputText id="permissionUserGroupId"
 						value="#{taskAdminBean.selectedTask.permissionUserGroupId}"
-						required="true"
+						required="false"
 						label="#{i18n['task-detail-permissionUserGroupId']}" />
 					<p:message for="permissionUserGroupId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-eventCalendarId']}" />
 					<p:inputText id="eventCalendarId"
 						value="#{taskAdminBean.selectedTask.eventCalendarId}"
-						required="true" label="#{i18n['task-detail-eventCalendarId']}" />
+						required="false" label="#{i18n['task-detail-eventCalendarId']}" />
 					<p:message for="eventCalendarId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-documentFolderId']}" />
 					<p:inputText id="documentFolderId"
 						value="#{taskAdminBean.selectedTask.documentFolderId}"
-						required="true" label="#{i18n['task-detail-documentFolderId']}" />
+						required="false" label="#{i18n['task-detail-documentFolderId']}" />
 					<p:message for="documentFolderId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-webcontentFolderId']}" />
 					<p:inputText id="webcontentFolderId"
 						value="#{taskAdminBean.selectedTask.webcontentFolderId}"
-						required="true" label="#{i18n['task-detail-webcontentFolderId']}" />
+						required="false" label="#{i18n['task-detail-webcontentFolderId']}" />
 					<p:message for="webcontentFolderId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-vocabularyId']}" />
 					<p:inputText id="vocabularyId"
-						value="#{taskAdminBean.selectedTask.vocabularyId}" required="true"
+						value="#{taskAdminBean.selectedTask.vocabularyId}" required="false"
 						label="#{i18n['task-detail-vocabularyId']}" />
 					<p:message for="vocabularyId" display="icon" />
 
@@ -72,12 +68,12 @@
 					<h:outputText value="#{i18n['task-detail-clamavServerIP']}" />
 					<p:inputText id="clamavServerIP"
 						value="#{taskAdminBean.selectedTask.clamavServerIP}"
-						required="true" label="#{i18n['task-detail-clamavServerIP']}" />
+						required="false" label="#{i18n['task-detail-clamavServerIP']}" />
 					<p:message for="clamavServerIP" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-clamavPort']}" />
 					<p:inputText id="clamavPort"
-						value="#{taskAdminBean.selectedTask.clamavPort}" required="true"
+						value="#{taskAdminBean.selectedTask.clamavPort}" required="false"
 						label="#{i18n['task-detail-clamavPort']}" />
 					<p:message for="clamavPort" display="icon" />
 

@@ -12,8 +12,8 @@
 		
 		<h:form id="form">
 
-			<p:tabView>
-				<p:tab title="#{i18n['mailbox-overview']}">
+			<p:tabView activeIndex="#{adminBean.tabViewIndex}">
+				<p:tab title="#{i18n['mailbox-overview']}" >
 					<ui:include src="/views/mailbox-sync-administration/mailboxOverview.xhtml" />
 				</p:tab>
 				

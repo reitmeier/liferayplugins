@@ -21,13 +21,17 @@ public class MailboxConverter implements Converter{
             try {
                 return MailboxLocalServiceUtil.getMaibox(Long.parseLong(value));
             } catch(NumberFormatException e) {
-            	e.printStackTrace();
+            	//e.printStackTrace();
             } catch (PortalException e) {				
-            	e.printStackTrace();		
+            	//e.printStackTrace();		
 			} catch (SystemException e) {
-				e.printStackTrace();
+				//e.printStackTrace();
 			}
-            throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid mailbox."));
+            FacesContext context = FacesContext.getCurrentInstance();
+            String summary = context.getApplication().getResourceBundle(context, "msg_communication").getString("not-a-valid-mailbox");	
+		
+            String detail =context.getApplication().getResourceBundle(context, "msg_communication").getString("the-selection-is-not-refering-to-a-valid-mailbox");	
+            throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, summary, detail));
         }
         else {
             return null;
