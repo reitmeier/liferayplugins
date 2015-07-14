@@ -56,9 +56,13 @@
 					<p:message for="webcontentFolderId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-vocabularyId']}" />
-					<p:inputText id="vocabularyId"
-						value="#{taskAdminBean.selectedTask.vocabularyId}" required="false"
-						label="#{i18n['task-detail-vocabularyId']}" />
+					<p:selectOneMenu id="vocabularyId" value="#{taskAdminBean.vocabulary}" converter="vocabularyConverter" panelStyle="width:180px"
+                          var="v" filter="true" filterMatchMode="startsWith">
+			            <f:selectItems value="#{taskAdminBean.vocabularies}" var="vocabulary" itemLabel="#{vocabulary.name}" itemValue="#{vocabulary}" />
+			            <p:column>
+			                <h:outputText value="#{v.name}" />
+			            </p:column>
+			        </p:selectOneMenu>
 					<p:message for="vocabularyId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-period']}" />
@@ -81,6 +85,9 @@
 
 				</h:panelGrid>
 
+
+			
+					
 				<p:commandButton id="cancelButton" ajax="false"
 					value="#{i18n['cancel']}" action="CANCEL" immediate="true" />
 				<p:commandButton id="saveButton" ajax="false"

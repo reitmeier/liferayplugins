@@ -56,7 +56,6 @@ public class MailboxAdminBean {
 	}
 	@PostConstruct
 	public void init() {
-		long groupId;
 		try {
 			getServiceContext();
 		} catch (PortalException e) {
