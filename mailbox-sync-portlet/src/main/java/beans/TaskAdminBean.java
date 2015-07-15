@@ -159,11 +159,11 @@ public class TaskAdminBean {
 			try {
 				selectedTask
 						.setMailboxId(selectedMailbox != null ? selectedMailbox
-								.getMailboxId() : null);
+								.getMailboxId() : 0L);
 				selectedTask
 						.setPermissionUserGroupId(selectedUserGroup != null ? selectedUserGroup
-								.getUserGroupId() : null);
-				selectedTask.setVocabularyId(vocabulary != null ? vocabulary.getPrimaryKey() : null);
+								.getUserGroupId() : 0L);
+				selectedTask.setVocabularyId(vocabulary != null ? vocabulary.getPrimaryKey() : 0L);
 				selectedTask = TaskLocalServiceUtil.updateTask(selectedTask);
 				return "SAVEOK";
 			} catch (SystemException e) {
