@@ -22,7 +22,9 @@ import at.mailbox.sync.service.impl.TaskLocalServiceImpl.TaskStatus;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.model.Group;
 import com.liferay.portal.model.UserGroup;
+import com.liferay.portal.service.GroupLocalServiceUtil;
 import com.liferay.portal.service.ServiceContext;
 import com.liferay.portal.service.ServiceContextFactory;
 import com.liferay.portal.service.UserGroupLocalServiceUtil;
