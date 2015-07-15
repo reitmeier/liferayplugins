@@ -99,6 +99,7 @@ public class TaskAdminBean {
 	public String addTask() throws SystemException {
 		long taskId = NEWID;
 		Task newTask = TaskLocalServiceUtil.createTask(taskId);
+		newTask.setStatus(TaskStatus.INACTIVE.name());
 		this.setSelectedTask(newTask);
 		return "ADD_TASK";
 
