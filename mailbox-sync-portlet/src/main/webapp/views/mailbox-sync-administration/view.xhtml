@@ -8,17 +8,17 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:head />
 	<h:body>
-		<h:outputText value="#{i18n['mailbox-sync-administration']}" />
-		
+	
 		<h:form id="form">
-
 			<p:tabView activeIndex="#{adminBean.tabViewIndex}">
-				<p:tab title="#{i18n['mailbox-overview']}" >
-					<ui:include src="/views/mailbox-sync-administration/mailboxOverview.xhtml" />
+				<p:tab title="#{i18n['mailbox-overview']}">
+					<ui:include
+						src="/views/mailbox-sync-administration/mailboxOverview.xhtml" />
 				</p:tab>
-				
+
 				<p:tab title="#{i18n['task-overview']}">
-					<ui:include src="/views/mailbox-sync-administration/taskOverview.xhtml" />
+					<ui:include
+						src="/views/mailbox-sync-administration/taskOverview.xhtml" />
 				</p:tab>
 				<p:tab title="#{i18n['task-history-overview']}">
 					<h:panelGrid columns="2" cellpadding="10">
@@ -26,9 +26,7 @@
 					</h:panelGrid>
 				</p:tab>
 			</p:tabView>
-
-
-
 		</h:form>
+		
 	</h:body>
 </f:view>

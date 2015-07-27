@@ -10,7 +10,7 @@
 >
 	<h:head />
 	<h:body>
-		<h:outputText value="#{i18n['mailbox-detail']}" /> 
+		<h4>#{i18n['mailbox-detail']}</h4>
 		
 		<h:form id="form">
 		 	<p:panel id="panel" >
@@ -18,19 +18,19 @@
 			<p:messages id="msgs"/>
 		    <h:panelGrid columns="3" cellpadding="5" id="matchGrid">
 		    
-		     	<h:outputText value="#{i18n['mailbox-detail-description']}" />
+		     	<h:outputText value="#{i18n['mailbox-detail-description']}*" />
 		        <p:inputText id="description" value="#{mailboxAdminBean.selectedMailbox.description}" 
 		        	required="true"	 label="#{i18n['mailbox-detail-description']}" 	/>
 		        <p:message for="description" display="icon" />
             	
 		    
-		        <h:outputText value="#{i18n['mailbox-detail-host']}" />
+		        <h:outputText value="#{i18n['mailbox-detail-host']}*" />
 		        <p:inputText id="host" value="#{mailboxAdminBean.selectedMailbox.host}" 
 		        	required="true" label="#{i18n['mailbox-detail-host']}" />
 		        <p:message for="host" display="icon"/>
             	
            	
-		        <h:outputText value="#{i18n['mailbox-detail-port']}" />
+		        <h:outputText value="#{i18n['mailbox-detail-port']}*" />
 		        <p:inputText id="port" value="#{mailboxAdminBean.selectedMailbox.port}" 
 		        	required="true" label="#{i18n['mailbox-detail-port']}" validatorMessage="#{i18n['mailbox-detail-port-validation-message']}">
 		        	<f:validateLength minimum="1" maximum="4" for="port"/>
@@ -38,13 +38,13 @@
 		     	<p:message for="port" display="icon" />
          
 		        
-		        <h:outputText value="#{i18n['mailbox-detail-mailboxUser']}" />
+		        <h:outputText value="#{i18n['mailbox-detail-mailboxUser']}*" />
 		        <p:inputText id="mailboxUser" value="#{mailboxAdminBean.selectedMailbox.mailboxUser}" 
 		        	required="true"  label="#{i18n['mailbox-detail-mailboxUser']}" />
 		        <p:message for="mailboxUser" display="icon"/>
             	
 		        
-		        <h:outputLabel for="mailboxUserSecret1" value="#{i18n['mailbox-detail-mailboxUserSecret1']}" />
+		        <h:outputLabel for="mailboxUserSecret1" value="#{i18n['mailbox-detail-mailboxUserSecret']}*" />
 		        <p:password id="mailboxUserSecret1" value="#{mailboxAdminBean.selectedMailbox.mailboxUserSecret}" 
 		        	label="#{i18n['mailbox-detail-mailboxUserSecret1']}"  />
 		 		<p:message for="mailboxUserSecret1" display="icon"/>
@@ -54,14 +54,17 @@
 		        	label="#{i18n['mailbox-detail-mailboxUserSecret2']}"  />
     			<p:message for="mailboxUserSecret2" display="icon"/> -->
             	
-            	
 		    </h:panelGrid>
-		 
+		    
 		    <p:commandButton id="cancelButton" ajax="false" value="#{i18n['cancel']}"  action="CANCEL" immediate="true" />
 		    <p:commandButton id="saveButton" ajax="false" value="#{i18n['save']}"  action="#{mailboxAdminBean.saveMailbox}" />
 		    <p:commandButton id="deleteButton" value="#{i18n['delete']}" action="#{mailboxAdminBean.deleteMailbox}" process="@this">
 		    	<p:confirm header="#{i18n['confirmation']}" message="#{i18n['mailbox-delete-are-you-sure']}" icon="ui-icon-alert" />
 		    </p:commandButton>
+		    
+		    <p>
+		    	<h:outputText value="#{i18n['required']}"></h:outputText>
+		    </p>
 		    
 		    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 		        <p:commandButton value="#{i18n['yes']}" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />

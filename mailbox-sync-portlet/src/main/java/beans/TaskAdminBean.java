@@ -36,14 +36,18 @@ public class TaskAdminBean {
 	private long NEWID = 0;
 	private ServiceContext serviceContext = null;
 	private Task selectedTask = null;
-	private Mailbox selectedMailbox = null;
-	private UserGroup selectedUserGroup = null;
 	private TaskStatus taskstatus = null;
 	private List<TaskStatus> statusList = new ArrayList<TaskStatus>(
 			Arrays.asList(TaskStatus.values()));
 	
 	private AssetVocabulary vocabulary;   
     private List<AssetVocabulary> vocabularies;
+    
+    private Mailbox selectedMailbox = null;
+    private List<Mailbox> mailboxes;
+    
+    private UserGroup selectedUserGroup = null;
+    private List<UserGroup> userGroups;
      
     @ManagedProperty("#{vocabularyService}")
     private VocabularyService service;
@@ -75,14 +79,18 @@ public class TaskAdminBean {
 	public void init() {
 		try {
 			getServiceContext();
+			vocabularies = service.getVocabularies();
+			setMailboxes(MailboxLocalServiceUtil
+					.getMailboxByGroupId(serviceContext.getScopeGroupId()));
+			setUserGroups(UserGroupLocalServiceUtil
+					.getUserGroups(serviceContext.getCompanyId()));
 		} catch (PortalException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SystemException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		vocabularies = service.getVocabularies();
+		}	
 	}
 
 	public List<Task> getTaskList() {
@@ -158,6 +166,7 @@ public class TaskAdminBean {
 
 		} else {
 			try {
+				selectedTask.setStatus(taskstatus != null ? taskstatus.name() : "");
 				selectedTask
 						.setMailboxId(selectedMailbox != null ? selectedMailbox
 								.getMailboxId() : 0L);
@@ -187,20 +196,20 @@ public class TaskAdminBean {
 		return "DELETEERROR";
 	}
 
-	public List<Mailbox> completeMailboxes(String query) throws SystemException {
-		List<Mailbox> allMailboxes = MailboxLocalServiceUtil
-				.getMailboxByGroupId(serviceContext.getScopeGroupId());
-		List<Mailbox> filteredMailboxes = new ArrayList<Mailbox>();
-
-		for (int i = 0; i < allMailboxes.size(); i++) {
-			Mailbox test = allMailboxes.get(i);
-			if (test.getDescription().toLowerCase().startsWith(query)) {
-				filteredMailboxes.add(test);
-			}
-		}
-
-		return filteredMailboxes;
-	}
+//	public List<Mailbox> completeMailboxes(String query) throws SystemException {
+//		List<Mailbox> allMailboxes = MailboxLocalServiceUtil
+//				.getMailboxByGroupId(serviceContext.getScopeGroupId());
+//		List<Mailbox> filteredMailboxes = new ArrayList<Mailbox>();
+//
+//		for (int i = 0; i < allMailboxes.size(); i++) {
+//			Mailbox test = allMailboxes.get(i);
+//			if (test.getDescription().toLowerCase().startsWith(query)) {
+//				filteredMailboxes.add(test);
+//			}
+//		}
+//
+//		return filteredMailboxes;
+//	}
 
 	public char getMailboxGroup(Mailbox mailbox) {
 		return mailbox.getDescription().charAt(0);
@@ -291,5 +300,21 @@ public class TaskAdminBean {
 
 	public void setService(VocabularyService service) {
 		this.service = service;
+	}
+
+	public List<Mailbox> getMailboxes() {
+		return mailboxes;
+	}
+
+	public void setMailboxes(List<Mailbox> mailboxes) {
+		this.mailboxes = mailboxes;
+	}
+
+	public List<UserGroup> getUserGroups() {
+		return userGroups;
+	}
+
+	public void setUserGroups(List<UserGroup> userGroups) {
+		this.userGroups = userGroups;
 	}
 }

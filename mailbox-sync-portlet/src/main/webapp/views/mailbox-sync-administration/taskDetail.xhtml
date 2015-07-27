@@ -8,33 +8,55 @@
 	xmlns:p="http://primefaces.org/ui">
 	<h:head />
 	<h:body>
-		<h:outputText value="#{i18n['task-detail']}" />
+		<h4>#{i18n['task-detail']}</h4>
 
 		<h:form id="form">
 			<p:panel id="panel">
 
 				<p:messages id="msgs" />
 				<h:panelGrid columns="3" cellpadding="5" id="matchGrid">
-					<h:outputText value="#{i18n['task-detail-status']}" />
-					<p:autoComplete id="status" dropdown="true" value="#{taskAdminBean.selectedTask.status}" completeMethod="#{taskAdminBean.completeStatus}" required="true" />
+					<h:outputText value="#{i18n['task-detail-status']}*" />
+					<p:selectOneMenu id="status" value="#{taskAdminBean.taskstatus}"
+						var="s" filter="false">
+						<f:selectItems value="#{taskAdminBean.statusList}" var="status"
+							itemLabel="#{status.name()}" itemValue="#{status}" />
+						<p:column>
+							<h:outputText value="#{s.name()}" />
+						</p:column>
+					</p:selectOneMenu>
 					<p:message for="status" display="icon" />
 
-					<h:outputText value="#{i18n['task-detail-description']}" />
+					<h:outputText value="#{i18n['task-detail-description']}*" />
 					<p:inputText id="description"
 						value="#{taskAdminBean.selectedTask.description}" required="true"
 						label="#{i18n['task-detail-description']}" />
 					<p:message for="description" display="icon" />
 
-					<h:outputText value="#{i18n['task-detail-mailboxId']}" />
-					<p:autoComplete id="mailboxId" value="#{taskAdminBean.selectedMailbox}" completeMethod="#{taskAdminBean.completeMailboxes}"
-               		 var="mailbox" itemLabel="#{mailbox.description}" itemValue="#{mailbox}" converter="mailboxConverter"
-                	groupBy="#{taskAdminBean.getMailboxGroup(mailbox)}" scrollHeight="250" required="false"/>
-					<p:message for="description" display="icon" />
-					
+					<h:outputText value="#{i18n['task-detail-mailboxId']}*" />
+					<p:selectOneMenu id="mailboxId" value="#{taskAdminBean.selectedMailbox}"
+						converter="mailboxConverter"
+						var="m" filter="false">
+						<f:selectItems value="#{taskAdminBean.mailboxes}" var="mailbox"
+							itemLabel="#{mailbox.description}" itemValue="#{mailbox}" />
+						<p:column>
+							<h:outputText value="#{m.mailboxId}" />
+						</p:column>
+						<p:column>
+							<h:outputText value="#{m.description}" />
+						</p:column>
+					</p:selectOneMenu>
+					<p:message for="mailboxId" display="icon" />
+
 					<h:outputText value="#{i18n['task-detail-permissionUserGroupId']}" />
-					<p:autoComplete id="permissionUserGroupId" value="#{taskAdminBean.selectedUserGroup}" completeMethod="#{taskAdminBean.completeUserGroups}"
-               		 var="userGroup" itemLabel="#{userGroup.description}" itemValue="#{userGroup}" converter="UserGroupConverter"
-                	groupBy="#{taskAdminBean.getUserGroupGroup(userGroup)}" scrollHeight="250" required="false"/>
+					<p:selectOneMenu id="permissionUserGroupId" value="#{taskAdminBean.selectedUserGroup}"
+						converter="UserGroupConverter" groupBy="#{taskAdminBean.getUserGroupGroup(userGroup)}"
+						var="ug" filter="false">
+						<f:selectItems value="#{taskAdminBean.userGroups}" var="userGroups"
+							itemLabel="#{userGroups.name}" itemValue="#{userGroups}" />
+						<p:column>
+							<h:outputText value="#{ug.name}" />
+						</p:column>
+					</p:selectOneMenu>
 					<p:message for="permissionUserGroupId" display="icon" />
 
 					<h:outputText value="#{i18n['task-detail-eventCalendarId']}" />
@@ -55,17 +77,20 @@
 						required="false" label="#{i18n['task-detail-webcontentFolderId']}" />
 					<p:message for="webcontentFolderId" display="icon" />
 
-					<h:outputText value="#{i18n['task-detail-vocabularyId']}" />
-					<p:selectOneMenu id="vocabularyId" value="#{taskAdminBean.vocabulary}" converter="vocabularyConverter" panelStyle="width:180px"
-                          var="v" filter="false" >
-			            <f:selectItems value="#{taskAdminBean.vocabularies}" var="vocabulary" itemLabel="#{vocabulary.name}" itemValue="#{vocabulary}" />
-			            <p:column>
-			                <h:outputText value="#{v.name}" />
-			            </p:column>
-			        </p:selectOneMenu>
+					<h:outputText value="#{i18n['task-detail-vocabularyId']}*" />
+					<p:selectOneMenu id="vocabularyId"
+						value="#{taskAdminBean.vocabulary}"
+						converter="vocabularyConverter" var="v" filter="false">
+						<f:selectItems value="#{taskAdminBean.vocabularies}"
+							var="vocabulary" itemLabel="#{vocabulary.name}"
+							itemValue="#{vocabulary}" />
+						<p:column>
+							<h:outputText value="#{v.name}" />
+						</p:column>
+					</p:selectOneMenu>
 					<p:message for="vocabularyId" display="icon" />
 
-					<h:outputText value="#{i18n['task-detail-period']}" />
+					<h:outputText value="#{i18n['task-detail-period']}*" />
 					<p:inputText id="period"
 						value="#{taskAdminBean.selectedTask.period}" required="true"
 						label="#{i18n['task-detail-period']}" />
@@ -86,8 +111,8 @@
 				</h:panelGrid>
 
 
-			
-					
+
+
 				<p:commandButton id="cancelButton" ajax="false"
 					value="#{i18n['cancel']}" action="CANCEL" immediate="true" />
 				<p:commandButton id="saveButton" ajax="false"
@@ -97,6 +122,10 @@
 					<p:confirm header="#{i18n['confirmation']}"
 						message="#{i18n['task-delete-are-you-sure']}" icon="ui-icon-alert" />
 				</p:commandButton>
+
+				<p>
+					<h:outputText value="#{i18n['required']}"></h:outputText>
+				</p>
 
 				<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
 					<p:commandButton value="#{i18n['yes']}" type="button"

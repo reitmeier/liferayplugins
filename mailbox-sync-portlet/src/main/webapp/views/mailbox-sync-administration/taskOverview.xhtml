@@ -14,9 +14,6 @@
 	<br />
 
 	<p:dataTable id="taskList" var="task" value="#{taskAdminBean.taskList}">
-		<f:facet name="header">
-			            TaskList
-			        </f:facet>
 		<p:column style="width:32px;text-align: center">
 			<p:commandButton icon="ui-icon-search" title=" #{i18n['view-task']} "
 				action="EDIT_TASK" ajax="false">
